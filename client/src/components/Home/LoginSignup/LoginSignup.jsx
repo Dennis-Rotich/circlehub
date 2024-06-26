@@ -19,7 +19,7 @@ function LoginSignup({setUser}){
     const handleSubmit = async () => {
         if (action === 'Login'){
             try {
-                const response = await axios.post(`http://127.0.0.1:5555/login`, {"username":userName,"password":password});
+                const response = await axios.post(`/login`, {"username":userName,"password":password});
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('user_id');
                 localStorage.removeItem('username');
@@ -38,7 +38,7 @@ function LoginSignup({setUser}){
         }
         if (action === 'Sign Up'){
             try {
-                const response = await axios.post(`http://127.0.0.1:5555/user`, {"username":userName,"first_name":firstName,"last_name":lastName,"password":password}); 
+                const response = await axios.post(`/user`, {"username":userName,"first_name":firstName,"last_name":lastName,"password":password}); 
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('user_id');
                 localStorage.removeItem('username')

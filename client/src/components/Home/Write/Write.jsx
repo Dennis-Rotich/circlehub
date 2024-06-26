@@ -22,12 +22,12 @@ export default function Write(){
             const Data =new FormData();
             Data.append("file",file)
             try{
-                const response = await axios.post('http://127.0.0.1:5555/image',Data)
+                const response = await axios.post('/image',Data)
             }catch(err){
                 console.error(err);
             }
             try {
-                const response = await axios.post(`http://127.0.0.1:5555/post`, {"title": title, "content":content, 'user_id':id,"category":category,"image":file.name})
+                const response = await axios.post(`/post`, {"title": title, "content":content, 'user_id':id,"category":category,"image":file.name})
                 setPostId(response.data.id)
             } catch (error) { console. log(error); }
         }
@@ -36,7 +36,7 @@ export default function Write(){
 
 
 
-    // const handleSubmit = async () => { try { const response = await axios. post("http://127.0.0.1:5555/posts", { "title": {title}, "content":  {content}, 'user_id':{id}}); console. log(response); } catch (error) { console. log(error); } };
+    // const handleSubmit = async () => { try { const response = await axios. post("/posts", { "title": {title}, "content":  {content}, 'user_id':{id}}); console. log(response); } catch (error) { console. log(error); } };
     
 
     return(

@@ -24,7 +24,7 @@ export default function Settings({setUsername}){
       try {
         const token = localStorage.getItem('access_token')
         const id = localStorage.getItem("user_id")
-        const response = await fetch(`http://127.0.0.1:5555/users/${id}`, {
+        const response = await fetch(`/users/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -50,7 +50,7 @@ export default function Settings({setUsername}){
       const id = localStorage.getItem("user_id")
       const token = localStorage.getItem("access_token")
       try{
-        await axios.patch(`http://127.0.0.1:5555/users/${id}`,{
+        await axios.patch(`/users/${id}`,{
           headers: {
             'Authorization':  `Bearer ${token}`
           },

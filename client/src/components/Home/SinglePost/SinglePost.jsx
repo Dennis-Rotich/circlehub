@@ -28,7 +28,7 @@ export default function SinglePost({}){
     useEffect(() => {
       const fetchPost = async () => {
         try {
-          const response = await axios.get(`http://localhost:5555/posts/${id}`);
+          const response = await axios.get(`/posts/${id}`);
           setPost(response.data);
           setPostId(response.data.id)
           setTitle(response.data.title)
@@ -82,7 +82,7 @@ export default function SinglePost({}){
     
     const handeDelete = async()=>{
         try{
-            await axios.delete(`http://127.0.0.1:5555/posts/${post.id}`)
+            await axios.delete(`/posts/${post.id}`)
             navigate('/')
         }catch(err){
             console.error(err);
@@ -91,7 +91,7 @@ export default function SinglePost({}){
 
     const handleUpdate = async()=>{
         try{
-            await axios.patch(`http://127.0.0.1:5555/posts/${post.id}`,{"title":title,"content":desc})
+            await axios.patch(`/posts/${post.id}`,{"title":title,"content":desc})
             setUpdateMode(false)
         }catch(err){
             console.error(err);
@@ -117,7 +117,7 @@ export default function SinglePost({}){
       e.preventDefault();
             const userId = localStorage.getItem('user_id')      
             try {
-              const response = await axios.post(`http://localhost:5555/posts/${postId}/comments`, {
+              const response = await axios.post(`/posts/${postId}/comments`, {
                 user_id: userId,
                 message,
                 created_at: new Date().toISOString(), 
@@ -133,7 +133,7 @@ export default function SinglePost({}){
     return(
         <div className="singlePost">
             <div className="singlePostWrapper">
-                <img src={`http://127.0.0.1:5555/static/images/${post.image}`} alt="" className="singlePostImg" />
+                <img src={`/static/images/${post.image}`} alt="" className="singlePostImg" />
                 {updateMode?<input type='text' value={title} className='singlePostTitleInput' autoFocus onChange={(e)=>{setTitle(e.target.value)}}/>:(
                     <h1 className="singlePostTitle">
                     {title}

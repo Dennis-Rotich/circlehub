@@ -27,7 +27,7 @@ img = os.path.join('static','images')
 
 @app.route('/<name>')
 def images(name):
-    file = os.path.join(img,str(name))
+    file = os.path.join(img,str(name + datetime.now()))
     return render_template('image_render.html', image=file)
 
 def allowed_file(filename):

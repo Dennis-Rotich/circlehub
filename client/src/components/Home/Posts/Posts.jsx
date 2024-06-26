@@ -11,7 +11,7 @@ export default function Posts({category, search, searchTerm}){
       // const category = e.target.value;
       // setSelectedCategory(category);
       try {
-        const response = await axios.get(`http://localhost:5555/posts?category=${category}`);
+        const response = await axios.get(`/posts?category=${category}`);
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -20,7 +20,7 @@ export default function Posts({category, search, searchTerm}){
 
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get("http://localhost:5555/posts", {
+        const response = await axios.get("/posts", {
           params: { category: category, title: searchTerm }
         });
         setPosts(response.data);
@@ -45,7 +45,7 @@ export default function Posts({category, search, searchTerm}){
     useEffect(() => {
       const fetchPosts = async () => {
         try {
-          const response = await axios.get("http://localhost:5555/posts");
+          const response = await axios.get("/posts");
           setPosts(response.data);
         } catch (error) {
           console.error("Error fetching posts:", error);
